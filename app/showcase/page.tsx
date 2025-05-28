@@ -1,14 +1,12 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function ShowcasePage() {
-  const handleFullscreen = () => {
-    const video = document.querySelector('video');
-    if (video && video.requestFullscreen) {
-      video.requestFullscreen().catch(err => {
-        console.log('Fullscreen not supported:', err);
-      });
-    }
+  const router = useRouter();
+
+  const handleGoBack = () => {
+    router.push('/');
   };
 
   return (
@@ -43,23 +41,12 @@ export default function ShowcasePage() {
         </div>
         
         <div className="text-center mt-8">
-          <p className="text-gray-400 mb-6 text-sm">
-            Haz clic en el video para controlar la reproducción
-          </p>
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4 justify-center">
-            <button 
-              onClick={handleFullscreen}
-              className="w-64 h-10 rounded-xl bg-[#ff00ff] border dark:border-white border-transparent text-white text-sm font-semibold hover:bg-[#e600e6] transition-colors"
-            >
-              Pulsa para pantalla completa
-            </button>
-            <button 
-              onClick={() => window.close()}
-              className="w-48 h-10 rounded-xl bg-white text-black border border-black text-sm hover:bg-gray-100 transition-colors"
-            >
-              Cerrar
-            </button>
-          </div>
+          <button 
+            onClick={handleGoBack}
+            className="w-32 h-10 rounded-xl bg-[#ff00ff] border dark:border-white border-transparent text-white text-sm font-semibold hover:bg-[#e600e6] transition-colors"
+          >
+            ATRÁS
+          </button>
         </div>
       </div>
     </div>
